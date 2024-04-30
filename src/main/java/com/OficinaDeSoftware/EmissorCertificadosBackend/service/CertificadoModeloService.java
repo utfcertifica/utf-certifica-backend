@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.CertificadoModeloConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.CertificadoModelo;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.CertificadoModelo;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoModeloDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.CertificadoModeloRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoModeloRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service
@@ -25,12 +25,12 @@ public class CertificadoModeloService {
         return repository.findAll();
     }
 
-    public CertificadoModelo findById(String codigo) {
+    public CertificadoModelo findById(Long codigo) {
         return repository.findById(codigo).orElseThrow(() -> new ObjectNotFoundException("CertificadoModelo não encontrado"));
     }
 
     public CertificadoModelo insert(CertificadoModeloDto certificadoModelo) {
-        return repository.insert(converter.convertToEntity(certificadoModelo));
+        return repository.save(converter.convertToEntity(certificadoModelo));
     }
 
     public CertificadoModelo update(CertificadoModeloDto certificadoModelo) {
@@ -39,7 +39,7 @@ public class CertificadoModeloService {
         return repository.save(certificadoModeloAtualizado);
     }
 
-    public void delete(String codigo) {
+    public void delete(Long codigo) {
         findById(codigo);
         repository.deleteById(codigo);
     }

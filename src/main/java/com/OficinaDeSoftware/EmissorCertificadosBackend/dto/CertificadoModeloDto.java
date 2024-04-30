@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class CertificadoModeloDto {
     
     @Id
-    private String idCertificadoModelo;
+    private Long idCertificadoModelo;
     private String xmlModelo;
 }
