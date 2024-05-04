@@ -2,11 +2,11 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 
 import java.util.Objects;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Local;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.LocalDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
 
@@ -28,7 +28,7 @@ public class LocalConverter {
 
   } 
 
-  public Local convertToEntity( final LocalDto dto ) {
+  public Local convertToEntity(final LocalDto dto ) {
 
     return Objects.isNull(dto) ? null : modelMapper.map( dto, Local.class );
     

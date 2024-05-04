@@ -2,12 +2,13 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 
 import java.util.Objects;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.User;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
+
 import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
 
 @Component
@@ -22,15 +23,15 @@ public class UserConverter {
     
   }
 
-  public UserDto convertToDto( final User user ) {
+  public UserDto convertToDto( final Usuario user ) {
 
     return Objects.isNull(user) ? null : modelMapper.map( user, UserDto.class );
 
   } 
 
-  public User convertToEntity( final UserDto dto ) {
+  public Usuario convertToEntity( final UserDto dto ) {
 
-    return Objects.isNull(dto) ? null : modelMapper.map( dto, User.class );
+    return Objects.isNull(dto) ? null : modelMapper.map( dto, Usuario.class );
     
   }
 

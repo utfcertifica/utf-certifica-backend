@@ -9,11 +9,10 @@ import org.springframework.stereotype.Service;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoParticipanteConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.UserConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.User;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoParticipanteDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoParticipanteRepository;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.UserRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.UserRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service
@@ -43,21 +42,22 @@ public class EventoParticipanteService {
 
         EventoParticipante participante = converter.convertToEntity( participanteDto );
         
-        final User user = usuarioRepository.findByEmail( participante.getDsEmail() );
+       // final UserDto user = usuarioRepository.( participante.getDsEmail() );
 
-        if( user == null ) {
-           throw new ObjectNotFoundException("Usuario não encontrado");
-        }
+       // if( user == null ) {
+       //    throw new ObjectNotFoundException("Usuario não encontrado");
+       // }
 
-        if( repository.existsByNrUuidParticipanteAndIdEvento( user.getNrUuid(), participanteDto.getIdEvento() ) ){
-            return usuarioConverter.convertToDto( user );
-        }
+      //  if( repository.existsByNrUuidParticipanteAndIdEvento( user.getNrUuid(), participanteDto.getIdEvento() ) ){
+      //      return usuarioConverter.convertToDto( user );
+     //   }
 
-        participante.setNrUuidParticipante( user.getNrUuid() );
+      //  participante.setNrUuidParticipante( user.getNrUuid() );
 
-        repository.insert( participante );
+      //  repository.insert( participante );
 
-        return usuarioConverter.convertToDto( user );
+      //  return usuarioConverter.convertToDto( user );
+        return null;
 
     }
 

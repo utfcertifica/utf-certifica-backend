@@ -4,6 +4,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -30,7 +31,7 @@ public class Evento {
     private String idLocal;
 
     @Transient
-    List<User> participantes;
+    List<UserDto> participantes;
 
     @Transient
     private List<DateEvent> dates;

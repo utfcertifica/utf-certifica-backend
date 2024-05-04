@@ -3,7 +3,6 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -45,7 +44,7 @@ public class EventoDto {
     private String nrUuidResponsavel;
 
     @JsonProperty("participants")
-    List<User> participantes;
+    List<UserDto> participantes;
 
     @JsonIgnore
     private String idLocal;

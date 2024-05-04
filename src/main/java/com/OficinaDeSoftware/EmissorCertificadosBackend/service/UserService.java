@@ -1,12 +1,14 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.UserConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.User;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.UserRepository;
+
+
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.UserRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 import java.util.List;
@@ -20,16 +22,16 @@ public class UserService {
     @Autowired
     private UserConverter userConverter;
 
-    public List<User> findAll() {
+    public List<Usuario> findAll() {
         return repository.findAll();
     }
 
-    public void save(final UserDto userDto) {
-        this.repository.save(userConverter.convertToEntity(userDto));
+    public void save(final Usuario user) {
+        this.repository.save(user);
     }
 
-    public User findByNrUuid(final String nrUuid) {
-        return repository.findById(nrUuid).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
-    }
+    //public Usuario findByNrUuid(final String nrUuid) {
+      //  return repository.findByUuid(nrUuid).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+   // }
     
 }

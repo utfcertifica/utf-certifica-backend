@@ -4,6 +4,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,6 @@ import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Evento;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoPersonalizado;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Local;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.User;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.DateEventRepository;
@@ -61,7 +62,7 @@ public class EventoService {
 
     public List<EventoPersonalizado> findAllPersonalizado() {
         List<Evento> evento = findAll();
-        List<User> organizador = userService.findAll();
+        List<Usuario> organizador = userService.findAll();
         List<Local> local = localService.findAll();
         List<EventoPersonalizado> eventoPersonalizado = null;
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -106,12 +107,12 @@ public class EventoService {
 
         final List<EventoParticipante> participantes = participanteService.findAllByIdEvento(codigo);
 
-        final List<User> usuariosParticipantes = participantes
-        .stream()
-        .map( current -> userService.findByNrUuid( current.getNrUuidParticipante() ) )
-        .collect( Collectors.toList() );
+       // final List<UserDto> usuariosParticipantes = participantes
+      //  .stream()
+      //  .map( current -> userService.findByNrUuid( current.getNrUuidParticipante() ) )
+      //  .collect( Collectors.toList() );
 
-        event.setParticipantes( usuariosParticipantes );
+    //    event.setParticipantes( usuariosParticipantes );
 
         return event;
 

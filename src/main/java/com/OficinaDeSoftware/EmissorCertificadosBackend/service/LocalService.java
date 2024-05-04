@@ -29,9 +29,9 @@ public class LocalService {
         return repository.findById(codigo).orElseThrow(() -> new ObjectNotFoundException("Local não encontrado"));
     }
 
-    public Local insert(LocalDto local) {
-        return repository.insert(converter.convertToEntity(local));
-    }
+   // public Local insert(LocalDto local) {
+  //      return repository.insert(converter.convertToEntity(local));
+  //  }
 
     public Local update(LocalDto local) {
         Local localAtualizado = findById(local.getIdLocal());
