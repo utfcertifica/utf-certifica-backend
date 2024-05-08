@@ -2,10 +2,10 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller;
 
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,10 +25,10 @@ public class UserController {
     }
 
     // Example 
-    // @PostMapping( "/create" )
-    // @ResponseStatus( HttpStatus.CREATED )
-    // public void save( @RequestBody User user ){
-    //     service.save( user );
-    // }
+     @PostMapping( "/create" )
+     @ResponseStatus( HttpStatus.CREATED )
+        public void save( @RequestBody UserDto user){
+         service.save(user);
+     }
 
 }

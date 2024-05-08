@@ -2,6 +2,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,22 +43,21 @@ public class EventoParticipanteService {
 
         EventoParticipante participante = converter.convertToEntity( participanteDto );
         
-       // final UserDto user = usuarioRepository.( participante.getDsEmail() );
+        final Usuario user = usuarioRepository.findBynrUuid(participante.getNrUuidParticipante());
 
-       // if( user == null ) {
-       //    throw new ObjectNotFoundException("Usuario não encontrado");
-       // }
+       if( user == null ) {
+           throw new ObjectNotFoundException("Usuario não encontrado");
+        }
 
-      //  if( repository.existsByNrUuidParticipanteAndIdEvento( user.getNrUuid(), participanteDto.getIdEvento() ) ){
-      //      return usuarioConverter.convertToDto( user );
-     //   }
+        if( repository.existsByNrUuidParticipanteAndIdEvento( user.getNrUuid(), participanteDto.getIdEvento() ) ){
+            return usuarioConverter.convertToDto( user );
+        }
 
-      //  participante.setNrUuidParticipante( user.getNrUuid() );
+        participante.setNrUuidParticipante( user.getNrUuid() );
 
-      //  repository.insert( participante );
+        repository.insert( participante );
 
-      //  return usuarioConverter.convertToDto( user );
-        return null;
+        return usuarioConverter.convertToDto( user );
 
     }
 

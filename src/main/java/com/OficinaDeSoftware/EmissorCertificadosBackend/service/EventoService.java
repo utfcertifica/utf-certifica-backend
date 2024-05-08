@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.DateEvent;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.DateEvent;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Evento;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoPersonalizado;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Local;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.DateEventRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.DateEventRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 

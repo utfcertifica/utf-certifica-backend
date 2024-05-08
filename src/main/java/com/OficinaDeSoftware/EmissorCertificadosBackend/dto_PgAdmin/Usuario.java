@@ -1,10 +1,12 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.model.RoleEnum;
 import jakarta.persistence.*;
 
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,6 +23,7 @@ public class Usuario  implements Serializable {
     private String urlImagemPerfil;
     private Integer tipoUsuario;
 
-    //@Enumerated(EnumType.STRING)
-    //private List<RoleEnum> roles;
+
+    @Enumerated(EnumType.STRING)
+    private List<RoleEnum> roles;
 }

@@ -2,14 +2,15 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.LocalRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.LocalConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Local;
+
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.LocalDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.LocalRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service
@@ -29,9 +30,9 @@ public class LocalService {
         return repository.findById(codigo).orElseThrow(() -> new ObjectNotFoundException("Local não encontrado"));
     }
 
-   // public Local insert(LocalDto local) {
-  //      return repository.insert(converter.convertToEntity(local));
-  //  }
+    public Local insert(LocalDto local) {
+       return repository.save(converter.convertToEntity(local));
+    }
 
     public Local update(LocalDto local) {
         Local localAtualizado = findById(local.getIdLocal());

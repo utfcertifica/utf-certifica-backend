@@ -26,8 +26,8 @@ public class UserService {
         return repository.findAll();
     }
 
-    public void save(final Usuario user) {
-        this.repository.save(user);
+    public void save(final UserDto user) {
+        this.repository.save(userConverter.convertToEntity(user));
     }
 
     //public Usuario findByNrUuid(final String nrUuid) {
