@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  certificapostgres:
+    image: postgres:latest
+    container_name: certificapostgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: certificautf
+      POSTGRES_PASSWORD: certifica123
+      POSTGRES_DB: certificautf
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  certifica-java:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: certifica-java
+    ports:
+      - "8080:8080"
+    depends_on:
+      - certificapostgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://certificapostgres:5432/certificautf
+      SPRING_DATASOURCE_USERNAME: certificautf
+      SPRING_DATASOURCE_PASSWORD: certifica123
+
+volumes:
+  postgres_data:
