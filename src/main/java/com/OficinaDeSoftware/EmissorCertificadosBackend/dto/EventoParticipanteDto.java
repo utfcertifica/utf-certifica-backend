@@ -15,7 +15,7 @@ public class EventoParticipanteDto {
     @JsonIgnore
     private String idEventoUsuario;
 
-    @JsonProperty( "idEvent" )
+    @JsonProperty( "idEvento" )
     private String idEvento;
 
     @JsonProperty( "email" )

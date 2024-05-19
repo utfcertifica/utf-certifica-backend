@@ -4,22 +4,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.*;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.EventoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.DateEvent;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.Evento;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoPersonalizado;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.DateEventRepository;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service
@@ -106,12 +101,9 @@ public class EventoService {
 
         final List<EventoParticipante> participantes = participanteService.findAllByIdEvento(codigo);
 
-       // final List<UserDto> usuariosParticipantes = participantes
-      //  .stream()
-      //  .map( current -> userService.findByNrUuid( current.getNrUuidParticipante() ) )
-      //  .collect( Collectors.toList() );
+        final List<Usuario> usuariosParticipantes = participantes.stream().map( current -> userService.findByNrUuid( current.getNrUuidParticipante() )).collect( Collectors.toList());
 
-    //    event.setParticipantes( usuariosParticipantes );
+      //  event.setParticipantes( usuariosParticipantes);
 
         return event;
 
@@ -121,16 +113,16 @@ public class EventoService {
 
         Evento event = converter.convertToEntity(evento);
         
-        Evento newEvent = repository.insert( event );
+        Evento newEvent = repository.save( event );
 
-        List<DateEvent> dates = newEvent.getDates();
+      //  List<DateEvent> dates = newEvent.getDates();
 
-        if( dates != null && !dates.isEmpty() ) {
-            newEvent.getDates().forEach( ( item ) -> {
-                item.setIdEvento( newEvent.getIdEvento() );
-                dateEventRepository.save( item );
-            });
-        }
+       // if( dates != null && !dates.isEmpty() ) {
+          //  newEvent.getDates().forEach( ( item ) -> {
+             //   item.setIdEvento( newEvent.getIdEvento());
+             //   dateEventRepository.save( item );
+   //   });
+   //  }
 
         Certificado certificado = newEvent.getCertificado();
 

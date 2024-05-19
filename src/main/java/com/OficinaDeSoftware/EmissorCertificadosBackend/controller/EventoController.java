@@ -2,6 +2,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller;
 
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoPersonalizado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoPersonalizado;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.EventoService;
 

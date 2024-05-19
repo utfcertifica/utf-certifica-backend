@@ -21,4 +21,7 @@ public class EventoPersonalizado {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_evento_personalizado")
     private Long id;
+
+    public EventoPersonalizado(String dsNome, String dsInformacoes, String format, String format1, String format2, String format3, String loc, String org, String idEvento) {
+    }
 }

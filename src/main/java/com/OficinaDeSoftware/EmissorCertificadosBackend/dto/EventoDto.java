@@ -47,7 +47,7 @@ public class EventoDto {
     List<UserDto> participantes;
 
     @JsonIgnore
-    private String idLocal;
+    private Long idLocal;
 
     @JsonProperty("dates")
     private List<DateEventDto> dates;

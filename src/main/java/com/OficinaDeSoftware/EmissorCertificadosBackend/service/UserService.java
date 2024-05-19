@@ -30,8 +30,9 @@ public class UserService {
         this.repository.save(userConverter.convertToEntity(user));
     }
 
-    //public Usuario findByNrUuid(final String nrUuid) {
-      //  return repository.findByUuid(nrUuid).orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
-   // }
+    public Usuario findByNrUuid(final String nrUuid) {
+        return repository.findByNrUuid(nrUuid)
+                .orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
+    }
     
 }

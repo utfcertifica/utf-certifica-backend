@@ -18,8 +18,11 @@ public class DateEvent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_dateEvent")
     private String idDateEvent;
-    private String idEvento;
+
+    private Long idEvento;
+
     private String date;
     private String startTime;
     private String endTime;
+
 }
