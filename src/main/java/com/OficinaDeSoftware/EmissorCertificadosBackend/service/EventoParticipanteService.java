@@ -2,17 +2,17 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import java.util.List;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.EventoParticipanteRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoParticipanteConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.UserConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoParticipanteDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoParticipanteRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.UserRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
@@ -55,7 +55,7 @@ public class EventoParticipanteService {
 
         participante.setNrUuidParticipante( user.getNrUuid() );
 
-        repository.insert( participante );
+        repository.save( participante );
 
         return usuarioConverter.convertToDto( user );
 

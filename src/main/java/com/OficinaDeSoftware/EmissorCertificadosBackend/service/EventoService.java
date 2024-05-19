@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.DateEventRepository;

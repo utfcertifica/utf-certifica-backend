@@ -2,11 +2,11 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 
 import java.util.Objects;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoParticipante;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.domain.EventoParticipante;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoParticipanteDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
 
