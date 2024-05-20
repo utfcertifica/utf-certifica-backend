@@ -38,11 +38,13 @@ public class UserService {
         }
 
         user.setName(userDto.getName());
-        user.setRoles(userDto.getRoles());
+        // user.setRoles(userDto.getRoles());
 
         Usuario savedUser = repository.save(user);
+        if (savedUser != null && savedUser.getNrUuid() != null) {
+            userDto.setNrUuid(savedUser.getNrUuid().toString()); // Assuming nrUuid is user ID
+        }
 
-        userDto.setNrUuid(savedUser.getNrUuid().toString()); // Assuming nrUuid is user ID
         return userDto;
     }
 

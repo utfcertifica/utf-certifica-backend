@@ -2,6 +2,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller.auth;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CrendetialDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.ErrorDto;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.ProfileDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.UserService;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.util.JwtUtil;
@@ -81,16 +82,21 @@ public class AuthController {
                 HttpEntity<String> entity = new HttpEntity<>(headers);
 
                 logger.info("Fazendo requisição de perfil do usuário para: {}", PROFILE_URL);
-                ResponseEntity<UserDto> profileResponse = restTemplate.exchange(PROFILE_URL, HttpMethod.GET, entity, UserDto.class);
+                ResponseEntity<ProfileDto> profileResponse = restTemplate.exchange(PROFILE_URL, HttpMethod.GET, entity, ProfileDto.class);
                 logger.info("Resposta da requisição de perfil do usuário recebida com status: {}", profileResponse.getStatusCode());
 
                 if (profileResponse.getStatusCode().is2xxSuccessful()) {
-                    UserDto externalUserDto = profileResponse.getBody();
-                    logger.info("Dados do perfil do usuário recebidos: {}", externalUserDto);
+                    ProfileDto profileDto = profileResponse.getBody();
+                    logger.info("Dados do perfil do usuário recebidos: {}", profileDto);
 
+                    UserDto userDto = new UserDto();
+                    userDto.setNrUuid(profileDto.getLogin());
+                    userDto.setName(profileDto.getName());
+                    userDto.setEmail(profileDto.getEmail());
+                    userDto.setUrlImagemPerfil(profileDto.getPhoto());
 
                     // Criar ou atualizar o usuário no sistema local
-                    UserDto localUser = userService.createOrUpdateUser(externalUserDto);
+                    UserDto localUser = userService.createOrUpdateUser(userDto);
 
                     // Gerar token JWT local e retornar
                     final String jwt = jwtUtil.generateToken(localUser);
