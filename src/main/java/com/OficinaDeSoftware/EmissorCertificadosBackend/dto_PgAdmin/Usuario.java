@@ -13,6 +13,7 @@ import java.util.List;
 @SequenceGenerator(name = "seq_user", sequenceName = "seq_user", allocationSize = 1, initialValue = 1)
 public class Usuario  implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
     private Long idUsuario;

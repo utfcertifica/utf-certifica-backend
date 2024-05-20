@@ -9,6 +9,7 @@ import lombok.Data;
 @SequenceGenerator(name = "seq_evento_participante", sequenceName = "seq_evento_participante", allocationSize = 1, initialValue = 1)
 public class EventoParticipante {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_evento_participante")
     private int idEventoParticipante;

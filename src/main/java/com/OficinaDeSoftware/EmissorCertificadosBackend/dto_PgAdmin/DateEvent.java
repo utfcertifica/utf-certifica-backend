@@ -15,6 +15,7 @@ import java.io.Serializable;
 
 public class DateEvent implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_dateEvent")
     private String idDateEvent;

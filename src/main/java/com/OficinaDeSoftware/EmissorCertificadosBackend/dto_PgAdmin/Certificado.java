@@ -27,5 +27,7 @@ public class Certificado implements Serializable {
     private String htmlCertificado;
     private String idCertificadoModelo;
     private String modelo;
-    //private PersonalData personalData;
+
+    @ManyToOne
+    private PersonalData personalData;
 }

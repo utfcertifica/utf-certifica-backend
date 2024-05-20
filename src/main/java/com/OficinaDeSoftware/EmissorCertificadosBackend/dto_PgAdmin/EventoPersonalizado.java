@@ -18,6 +18,7 @@ public class EventoPersonalizado {
     private String dsAuditorio;
     private String organizador;
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_evento_personalizado")
     private Long id;
