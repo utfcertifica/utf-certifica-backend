@@ -100,6 +100,7 @@ public class AuthController {
 
                     // Gerar token JWT local e retornar
                     final String jwt = jwtUtil.generateToken(localUser);
+                    logger.info("accessToken gerado: {}", jwt);
                     localUser.setAccessToken(jwt);
 
                     logger.info("Usuário autenticado com sucesso!");
