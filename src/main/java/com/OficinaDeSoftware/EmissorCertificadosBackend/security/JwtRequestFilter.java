@@ -18,7 +18,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
-    private UserService userSer;
+    private UserService userService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -38,7 +38,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            var userDetails = this.userSer.findByNrUuid(username);
+            var userDetails = this.userService.findByNrUuid("asdasd");
             if (jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
