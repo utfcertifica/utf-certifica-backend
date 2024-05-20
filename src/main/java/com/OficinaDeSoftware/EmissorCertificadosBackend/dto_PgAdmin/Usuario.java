@@ -6,7 +6,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Data
 @Entity
@@ -27,4 +32,14 @@ public class Usuario  implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private List<RoleEnum> roles;
+
+    
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.name()))
+                .collect(Collectors.toList());
+    }
+    
+    // Adicionar senha para autenticação
+    private String password;
 }

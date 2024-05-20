@@ -25,4 +25,7 @@ public class UserDto {
     private String accessToken;
     @NotNull
     private List<RoleEnum> roles;
+
+    // Adicionar senha para autenticação
+    private String password;
 }
