@@ -38,12 +38,10 @@ public class UserService {
         }
 
         user.setName(userDto.getName());
+        user.setNrUuid(userDto.getNrUuid());
         // user.setRoles(userDto.getRoles());
 
-        Usuario savedUser = repository.save(user);
-        if (savedUser != null && savedUser.getNrUuid() != null) {
-            userDto.setNrUuid(savedUser.getNrUuid().toString()); // Assuming nrUuid is user ID
-        }
+        repository.save(user);
 
         return userDto;
     }
@@ -52,5 +50,5 @@ public class UserService {
         return repository.findByNrUuid(nrUuid)
                 .orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
     }
-    
+
 }
