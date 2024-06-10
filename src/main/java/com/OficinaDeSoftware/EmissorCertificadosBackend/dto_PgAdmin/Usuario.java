@@ -34,11 +34,11 @@ public class Usuario  implements Serializable {
     private List<RoleEnum> roles;
 
     
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.name()))
-                .collect(Collectors.toList());
-    }
+    // public Collection<? extends GrantedAuthority> getAuthorities() {
+    //     return roles.stream()
+    //             .map(role -> new SimpleGrantedAuthority(role.name()))
+    //             .collect(Collectors.toList());
+    // }
     
     // Adicionar senha para autenticação
     private String password;
