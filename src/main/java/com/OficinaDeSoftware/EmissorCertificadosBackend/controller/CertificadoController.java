@@ -19,7 +19,7 @@ public class CertificadoController {
     private CertificadoService service;
 
     @GetMapping("/findAll")
-    public List<Certificado> user() {
+    public List<Certificado> findAll() {
         return service.findAll();
     }
 
