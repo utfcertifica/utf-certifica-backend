@@ -1,9 +1,15 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.CertificadoConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
@@ -11,35 +17,69 @@ import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoDto;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class CertificadoService {
-    
+
     @Autowired
     private CertificadoRepository repository;
 
     @Autowired
     private CertificadoConverter converter;
 
+    private final Path fileStorageLocation = Paths.get("uploads").toAbsolutePath().normalize();
+    private static final Logger logger = LoggerFactory.getLogger(CertificadoService.class);
+
+    public CertificadoService() {
+        try {
+            Files.createDirectories(this.fileStorageLocation);
+        } catch (Exception ex) {
+            throw new RuntimeException("Could not create the directory where the uploaded files will be stored.", ex);
+        }
+    }
+
     public List<Certificado> findAll() {
         return repository.findAll();
     }
 
     public Certificado findById(Long codigo) {
-        return repository.findById(codigo).orElseThrow(() -> new ObjectNotFoundException("Certificado não encontrado"));
+        return repository.findById(codigo)
+                .orElseThrow(() -> new ObjectNotFoundException("Certificate not found"));
     }
 
-    public Certificado insert(CertificadoDto certificado) {
-        return repository.save(converter.convertToEntity(certificado));
+    public Certificado insert(CertificadoDto certificadoDto, MultipartFile file) {
+        logger.info("Inserting certificado: {}", certificadoDto);
+        logger.info("File details: Name - {}, Size - {}", file.getOriginalFilename(), file.getSize());
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String newFileName = resolveFileNameConflict(fileName);
+
+        try {
+            Path targetLocation = this.fileStorageLocation.resolve(newFileName);
+            Files.copy(file.getInputStream(), targetLocation);
+
+            certificadoDto.setFileCertificado(targetLocation.toString());
+
+            Certificado certificado = converter.convertToEntity(certificadoDto);
+            return repository.save(certificado);
+        } catch (IOException ex) {
+            throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+        }
     }
 
-    /*public Certificado update(CertificadoDto certificado) {
-        Certificado certificadoAtualizado = findById(certificado.getIdCertificado());
-        BeanUtils.copyProperties(certificado, certificadoAtualizado);
-        return repository.save(certificadoAtualizado);
-    }
+    private String resolveFileNameConflict(String fileName) {
+        String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+        String extension = fileName.substring(fileName.lastIndexOf('.'));
+        int count = 1;
 
-    public void delete(String codigo) {
-        findById(codigo);
-        repository.deleteById(codigo);
-    }*/
+        String newFileName = fileName;
+        while (Files.exists(this.fileStorageLocation.resolve(newFileName))) {
+            newFileName = baseName + "_" + count + extension;
+            count++;
+        }
+
+        return newFileName;
+    }
 }

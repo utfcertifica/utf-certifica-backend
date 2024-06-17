@@ -35,10 +35,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
 
-        // Allowing Swagger related routes based on common patterns
+        // Allowing uploads related routes based on common patterns
         String uri = request.getRequestURI();
-        if (uri.startsWith("/") || uri.contains("/swagger") || uri.contains("/v3/api-docs")
-                || uri.contains("/swagger-ui")) {
+        if (uri.startsWith("/uploads")) {
             logger.info("URI: {}", uri);
             chain.doFilter(request, response);
             return;

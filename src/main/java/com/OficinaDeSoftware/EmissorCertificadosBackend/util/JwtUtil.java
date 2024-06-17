@@ -19,8 +19,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private final String secret = "MsprHJDfRxzSElJyeLcrWMheIfAxwKttObUKtaHmbyqdEbGKWC"; // Use uma chave secreta mais
-                                                                                        // segura em produção
+    private final String secret = "MsprHJDfRxzSElJyeLcrWMheIfAxwKttObUKtaHmbyqdEbGKWC"; 
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));

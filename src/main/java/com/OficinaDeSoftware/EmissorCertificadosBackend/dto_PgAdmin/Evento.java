@@ -13,9 +13,9 @@ import lombok.Data;
 public class Evento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_evento")
-    private String idEvento;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Tipo Long para geração automática de IDs
+    
     private String dsNome;
     private LocalDateTime dhInicio;
     private LocalDateTime dhFim;

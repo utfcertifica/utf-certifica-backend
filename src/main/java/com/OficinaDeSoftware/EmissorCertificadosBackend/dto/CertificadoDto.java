@@ -14,47 +14,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CertificadoDto {
-    
+
     @Id
     @JsonIgnore
-    private String idCertificado;
+    private String id;
+    
+    @JsonProperty("idEvento")
+    private Long idEvento;
 
-    @JsonIgnore
-    private String idEvento;
-    
-    @JsonIgnore
-    private String idLocal;
-    
-    @JsonIgnore
-    private String urlLogo;
-    
-    @JsonIgnore
-    private String dsCertificado;
-    
-    @JsonIgnore
-    private String dsNomeEmissor;
+    @JsonProperty("nomeEvento")
+    private String nomeEvento;
 
-    @JsonIgnore
-    private LocalDate dtConclusao;
+    @JsonProperty("ministrante")
+    private String ministrante;
 
-    @JsonIgnore
+    @JsonProperty("dataEvento")
+    private LocalDate dataEvento;
+
+    @JsonProperty("nrCargaHoraria")
     private Integer nrCargaHoraria;
 
-    @JsonIgnore
-    private String dsTitulo;
-    
-    @JsonIgnore
-    private String dsNomeEvento;
-    
-    @JsonProperty( "htmlModel" )
-    private String htmlCertificado;
+    @JsonProperty("fileCertificado")
+    private String fileCertificado;
 
-    @JsonProperty( "modelo" )
-    private String modelo;
-    
-    @JsonIgnore
+    @JsonProperty("idCertificadoModelo")
     private String idCertificadoModelo;
-
-   // @JsonProperty( "personalData" )
-   // private PersonalDataDto personalData;
 }
