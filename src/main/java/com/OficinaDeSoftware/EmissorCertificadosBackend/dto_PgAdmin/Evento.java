@@ -1,8 +1,5 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import jakarta.persistence.*;
 
 import lombok.Data;
@@ -17,8 +14,6 @@ public class Evento {
     private Long id; // Tipo Long para geração automática de IDs
     
     private String dsNome;
-    private LocalDateTime dhInicio;
-    private LocalDateTime dhFim;
     private Integer nrCargaHoraria;
     private String dsInformacoes;
     private String nrUuidResponsavel;
