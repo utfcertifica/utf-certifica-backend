@@ -3,6 +3,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,16 +12,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventoParticipanteDto {
-    
-    @JsonIgnore
-    private String idEventoUsuario;
 
-    @JsonProperty( "idEvento" )
+    @Id
+    @JsonIgnore
+    private String id;
+
+    @JsonProperty("idEvento")
     private String idEvento;
 
-    @JsonProperty( "email" )
+    @JsonProperty("email")
     private String dsEmail;
 
-    @JsonIgnore
-    private String nrUuiParticipante;
+    @JsonProperty("name")
+    private String dsName;
 }

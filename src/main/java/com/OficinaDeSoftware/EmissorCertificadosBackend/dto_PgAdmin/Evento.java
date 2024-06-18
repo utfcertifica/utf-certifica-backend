@@ -14,24 +14,14 @@ public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // Tipo Long para geração automática de IDs
-    
+
     private String dsNome;
     private LocalDateTime dhInicio;
     private LocalDateTime dhFim;
-    private Integer nrCargaHoraria;
+    private String dsResumo;
     private String dsInformacoes;
     private String nrUuidResponsavel;
+    private String dsBanner;
 
     private Long idLocal;
-
-
-    //@OneToMany(mappedBy = "usuario")
-   // private List<Usuario> participantes;
-
-   // @OneToMany(mappedBy = "date")
-   // private List<DateEvent> dates;
-
-   @ManyToOne
-   private Certificado certificado;
-
 }

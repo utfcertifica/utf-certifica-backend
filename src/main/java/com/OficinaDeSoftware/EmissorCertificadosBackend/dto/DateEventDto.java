@@ -1,6 +1,7 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 
@@ -18,12 +19,13 @@ public class DateEventDto implements Serializable {
 
     @JsonIgnore
     @Id
-    private String idDateEvent;
+    private String id;
 
     @JsonIgnore
     private String idEvento;
 
-    private String date;
+    private String ministrante;
+    private LocalDate date;
     private String startTime;
     private String endTime;
 }

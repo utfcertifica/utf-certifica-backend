@@ -1,13 +1,11 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin;
 
 import jakarta.persistence.*;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -15,14 +13,14 @@ import java.io.Serializable;
 
 public class DateEvent implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_dateEvent")
-    private String idDateEvent;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private Long idEvento;
 
-    private String date;
+    private String ministrante;
+    private LocalDate date;
     private String startTime;
     private String endTime;
 

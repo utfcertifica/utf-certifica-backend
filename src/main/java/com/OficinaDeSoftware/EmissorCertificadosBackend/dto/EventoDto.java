@@ -1,11 +1,9 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Id;
@@ -19,10 +17,9 @@ import lombok.NoArgsConstructor;
 public class EventoDto {
     
     @Id
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonProperty("idEvent")
-    private String idEvento;
-
+    @JsonIgnore
+    private String id;
+    
     @JsonProperty("name")
     private String dsNome;
 
@@ -34,26 +31,13 @@ public class EventoDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dhFim;
 
-    @JsonProperty("workload")
-    private Integer nrCargaHoraria;
+    @JsonProperty("abstract")
+    private String dsResumo;
 
     @JsonProperty("informations")
     private String dsInformacoes;
 
-    @JsonProperty("nrUuidAccountable")
-    private String nrUuidResponsavel;
-
-    @JsonProperty("participants")
-    List<UserDto> participantes;
-
-    @JsonIgnore
-    private Long idLocal;
-
-    @JsonProperty("dates")
-    private List<DateEventDto> dates;
-
-    @JsonProperty( "certificate" )
-    private CertificadoDto certificado;
-
+    @JsonProperty("banner")
+    private String dsBanner;
 }
 

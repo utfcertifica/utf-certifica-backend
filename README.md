@@ -23,3 +23,9 @@ Utilizado quando a alteação apenas no código e não nas dependências.
 Roda a aplicação.
 
 Deve ser utilizado de pois de ter executado o camando "mvnw compile" ou "mvnw clean install"
+
+### `docker-compose up -d --build`
+
+Roda a aplicação.
+
+Deve ser utilizado de pois de ter executado o camando "mvnw compile" ou "mvnw clean install"
