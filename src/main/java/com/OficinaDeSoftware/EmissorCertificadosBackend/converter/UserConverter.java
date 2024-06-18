@@ -3,13 +3,13 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 import java.util.Objects;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Usuario;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.enums.ProviderModel;
 
 @Component
 public class UserConverter {

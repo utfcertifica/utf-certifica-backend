@@ -8,7 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Usuario;
 
 import java.security.Key;
 import java.util.Date;

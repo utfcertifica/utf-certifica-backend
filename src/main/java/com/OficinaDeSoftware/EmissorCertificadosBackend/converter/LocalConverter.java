@@ -2,13 +2,13 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 
 import java.util.Objects;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Local;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.LocalDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.enums.ProviderModel;
 
 @Component
 public class LocalConverter {

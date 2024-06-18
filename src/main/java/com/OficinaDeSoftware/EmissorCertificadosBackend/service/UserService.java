@@ -1,14 +1,14 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.UserConverter;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.UserRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.UserRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 import java.util.List;

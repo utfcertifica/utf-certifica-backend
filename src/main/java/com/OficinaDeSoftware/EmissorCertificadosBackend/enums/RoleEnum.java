@@ -1,4 +1,4 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.model;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.enums;
 
 import java.util.List;
 import java.util.stream.Collectors;

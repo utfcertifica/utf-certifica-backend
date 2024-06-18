@@ -3,7 +3,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller;
 import java.util.List;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.UserDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Usuario;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

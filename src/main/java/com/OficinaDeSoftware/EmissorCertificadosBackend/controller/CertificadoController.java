@@ -3,7 +3,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller;
 import java.util.List;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Certificado;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

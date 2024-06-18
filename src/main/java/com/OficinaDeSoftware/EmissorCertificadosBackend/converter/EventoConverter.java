@@ -2,13 +2,13 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.converter;
 
 import java.util.Objects;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Evento;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Evento;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.enums.ProviderModel;
 
 @Component
 public class EventoConverter {

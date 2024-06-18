@@ -13,9 +13,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.CertificadoConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Certificado;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.CertificadoRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 import org.slf4j.Logger;

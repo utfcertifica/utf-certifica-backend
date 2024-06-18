@@ -1,8 +1,8 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Certificado;
 import org.springframework.stereotype.Repository;
 
 @Repository

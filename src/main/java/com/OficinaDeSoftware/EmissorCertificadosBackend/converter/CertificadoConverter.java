@@ -6,9 +6,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Certificado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Certificado;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.model.ProviderModel;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.enums.ProviderModel;
 
 @Component
 public class CertificadoConverter {

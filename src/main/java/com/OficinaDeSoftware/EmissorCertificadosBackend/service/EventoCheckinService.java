@@ -2,8 +2,8 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import java.util.List;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoCheckin;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.EventoCheckinRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.EventoCheckin;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoCheckinRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

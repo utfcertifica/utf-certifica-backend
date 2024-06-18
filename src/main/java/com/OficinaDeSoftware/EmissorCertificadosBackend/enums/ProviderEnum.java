@@ -1,4 +1,4 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.model;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.enums;
 
 public enum ProviderEnum {
     GOOGLE;

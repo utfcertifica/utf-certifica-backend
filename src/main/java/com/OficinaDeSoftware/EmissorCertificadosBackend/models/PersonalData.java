@@ -1,4 +1,4 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.models;
 
 
 

@@ -1,6 +1,6 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.repository;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoPersonalizado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.EventoPersonalizado;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

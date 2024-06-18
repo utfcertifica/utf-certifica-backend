@@ -1,6 +1,6 @@
-package com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin;
+package com.OficinaDeSoftware.EmissorCertificadosBackend.models;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.model.RoleEnum;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.enums.RoleEnum;
 import jakarta.persistence.*;
 
 import lombok.Data;

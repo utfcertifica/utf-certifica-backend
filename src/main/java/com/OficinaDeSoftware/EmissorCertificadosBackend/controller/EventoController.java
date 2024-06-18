@@ -2,7 +2,7 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.controller;
 
 import java.util.List;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.EventoPersonalizado;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.EventoPersonalizado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.CertificadoModeloConverter;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.CertificadoModelo;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.CertificadoModelo;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.CertificadoModeloDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.CertificadoModeloRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.CertificadoModeloRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service

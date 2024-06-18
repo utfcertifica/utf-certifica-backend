@@ -2,8 +2,8 @@ package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
 import java.util.List;
 
-import com.OficinaDeSoftware.EmissorCertificadosBackend.dto_PgAdmin.Local;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository_pgAdmin.LocalRepository;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.models.Local;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.LocalRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
