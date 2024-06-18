@@ -42,4 +42,20 @@ public class CertificadoController {
 
         service.insert(certificado, file);
     }
+    @PutMapping(value = "/{idupdate}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("idupdate") Long id, @RequestPart("certificado") CertificadoDto certificado, @RequestPart("file") MultipartFile file) {
+        logger.info("Updating certificado with id: {}", id);
+        logger.info("Received certificado: {}", certificado);
+        logger.info("Received file: {}", file.getOriginalFilename());
+
+        service.atualizar(id, certificado);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

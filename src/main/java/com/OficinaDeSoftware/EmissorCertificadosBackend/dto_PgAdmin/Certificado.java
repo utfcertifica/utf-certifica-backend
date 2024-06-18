@@ -5,7 +5,11 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Data
 @Entity
 @SequenceGenerator(name = "seq_certificado", sequenceName = "seq_certificado", allocationSize = 1, initialValue = 1)

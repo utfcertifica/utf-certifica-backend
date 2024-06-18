@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,5 +82,31 @@ public class CertificadoService {
         }
 
         return newFileName;
+    }
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+    public Certificado atualizar(Long id, CertificadoDto certificadoDto) {
+        logger.info("Atualizando certificado com id: {}", id);
+        logger.info("Certificado recebido: {}", certificadoDto);
+        // Encontrar o certificado existente
+        Optional<Certificado> optionalCertificado = repository.findById(id);
+        if (!optionalCertificado.isPresent()) {
+            throw new RuntimeException("Certificado não encontrado com id " + id);
+        }
+
+        Certificado certificadoExistente = optionalCertificado.get();
+
+        // Atualizar campos do certificado com os dados do DTO
+        certificadoExistente.setIdEvento(certificadoDto.getIdEvento());
+        certificadoExistente.setNomeEvento(certificadoDto.getNomeEvento());
+        certificadoExistente.setMinistrante(certificadoDto.getMinistrante());
+        certificadoExistente.setDataEvento(certificadoDto.getDataEvento());
+        certificadoExistente.setNrCargaHoraria(certificadoDto.getNrCargaHoraria());
+        certificadoExistente.setFileCertificado(certificadoDto.getFileCertificado());
+        certificadoExistente.setIdCertificadoModelo(certificadoDto.getIdCertificadoModelo());
+
+        // Salvar o certificado atualizado
+        return repository.save(certificadoExistente);
     }
 }
