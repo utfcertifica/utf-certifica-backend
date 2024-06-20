@@ -16,22 +16,22 @@ public class EventoConverter {
   @Autowired
   private ModelMapper modelMapper;
 
-  public EventoDto convertToDto( final ProviderModel provider ){
+  public EventoDto convertToDto(final ProviderModel provider) {
 
-    return Objects.isNull(provider) ? null : modelMapper.map( provider, EventoDto.class );
-    
+    return Objects.isNull(provider) ? null : modelMapper.map(provider, EventoDto.class);
+
   }
 
-  public EventoDto convertToDto( final Evento user ) {
+  public EventoDto convertToDto(final Evento user) {
 
-    return Objects.isNull(user) ? null : modelMapper.map( user, EventoDto.class );
+    return Objects.isNull(user) ? null : modelMapper.map(user, EventoDto.class);
 
-  } 
+  }
 
-  public Evento convertToEntity( final EventoDto dto ) {
+  public Evento convertToEntity(final EventoDto dto) {
 
-    return Objects.isNull(dto) ? null : modelMapper.map( dto, Evento.class );
-    
+    return Objects.isNull(dto) ? null : modelMapper.map(dto, Evento.class);
+
   }
 
 }

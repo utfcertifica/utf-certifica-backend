@@ -1,19 +1,18 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.OficinaDeSoftware.EmissorCertificadosBackend.models.*;
+import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.DateEventRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.EventoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.DateEventConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.converter.EventoConverter;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.dto.EventoDto;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.CertificadoRepository;
-import com.OficinaDeSoftware.EmissorCertificadosBackend.repository.DateEventRepository;
 import com.OficinaDeSoftware.EmissorCertificadosBackend.service.exception.ObjectNotFoundException;
 
 @Service
@@ -23,11 +22,15 @@ public class EventoService {
     private EventoRepository repository;
     @Autowired
     private EventoConverter converter;
-    
+    @Autowired
+    private DateEventRepository dateEventRepository;
+    @Autowired
+    private DateEventConverter dateEventConverter;
+
     public List<EventoDto> findAllAsDto() {
         return findAll()
                 .stream()
-                .map(current -> converter.convertToDto(current))
+                .map(converter::convertToDto)
                 .collect(Collectors.toList());
     }
 
@@ -38,7 +41,7 @@ public class EventoService {
     public List<EventoDto> findAllByNrUuidResponsavelAsDto(String nrUuidResponsavel) {
         return repository.findAllByNrUuidResponsavel(nrUuidResponsavel)
                 .stream()
-                .map(current -> converter.convertToDto(current))
+                .map(converter::convertToDto)
                 .collect(Collectors.toList());
     }
 
@@ -49,13 +52,24 @@ public class EventoService {
     public Evento findById(String codigo) {
         return repository.findById(codigo)
                 .orElseThrow(() -> new ObjectNotFoundException("Evento não encontrado"));
-
     }
 
-    public EventoDto insert(EventoDto evento) {
-        Evento event = converter.convertToEntity(evento);
+    public EventoDto insert(EventoDto eventoDto) {
+        Evento event = converter.convertToEntity(eventoDto);
 
+        // Save the event
         Evento newEvent = repository.save(event);
+
+        // Save the DateEvents associated with the event
+        List<DateEvent> dateEvents = eventoDto.getDateEvents().stream()
+                .map(dto -> {
+                    DateEvent dateEvent = dateEventConverter.convertToEntity(dto);
+                    dateEvent.setEvento(newEvent);
+                    return dateEvent;
+                })
+                .collect(Collectors.toList());
+
+        dateEventRepository.saveAll(dateEvents);
 
         return converter.convertToDto(newEvent);
     }

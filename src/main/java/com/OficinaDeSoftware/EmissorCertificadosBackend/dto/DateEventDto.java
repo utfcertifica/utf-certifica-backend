@@ -25,6 +25,7 @@ public class DateEventDto implements Serializable {
     private String idEvento;
 
     private String ministrante;
+    private String titulo;
     private LocalDate date;
     private String startTime;
     private String endTime;

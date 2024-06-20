@@ -1,12 +1,10 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,29 +13,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EventoDto {
-    
-    @Id
-    @JsonIgnore
+
+    @JsonProperty("id")
     private String id;
-    
+
     @JsonProperty("name")
     private String dsNome;
 
     @JsonProperty("dateStart")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime dhInicio;
+    private LocalDate dhInicio;
 
     @JsonProperty("dateEnd")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime dhFim;
+    private LocalDate dhFim;
 
     @JsonProperty("abstract")
     private String dsResumo;
+
+    @JsonProperty("nrUuidResponsavel")
+    private String nrUuidResponsavel;
 
     @JsonProperty("informations")
     private String dsInformacoes;
 
     @JsonProperty("banner")
     private String dsBanner;
-}
 
+    @JsonProperty("dateEvents")
+    private List<DateEventDto> dateEvents; // Lista de cronogramas do evento
+}

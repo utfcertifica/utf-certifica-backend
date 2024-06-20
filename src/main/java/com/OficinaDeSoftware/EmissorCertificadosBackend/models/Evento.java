@@ -1,9 +1,9 @@
 package com.OficinaDeSoftware.EmissorCertificadosBackend.models;
 
-import java.time.LocalDateTime;
-
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.List;
 import jakarta.persistence.*;
-
 import lombok.Data;
 
 @Data
@@ -13,15 +13,16 @@ public class Evento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Tipo Long para geração automática de IDs
+    private Long id;
 
     private String dsNome;
-    private LocalDateTime dhInicio;
-    private LocalDateTime dhFim;
+    private LocalDate dhInicio;
+    private LocalDate dhFim;
     private String dsResumo;
     private String dsInformacoes;
     private String nrUuidResponsavel;
     private String dsBanner;
 
-    private Long idLocal;
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DateEvent> dateEvents;
 }
